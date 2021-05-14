@@ -6,10 +6,10 @@ import menuTemplate from './menu.hbs'
 const menuData = {
     menu: menu,
 }
-
 const menuHtml = menuTemplate(menuData);    
 
 document.querySelector('.js-menu').innerHTML = menuHtml; 
+
 
 //todo делаю переключение тем
 
@@ -29,8 +29,9 @@ const Theme = {
 
 function switcherTheme(event){
     body.setAttribute('class', body.classList.contains(Theme.DARK)?Theme.LIGHT :Theme.DARK);
+    // console.log(body.classList.contains(Theme.DARK))
     localStorage.setItem('theme', body.classList.value)
-    console.log(body.classList.value)
+    // console.log(body.classList.value)
 }
 
 checkboxSwitcher.addEventListener('change', switcherTheme);
@@ -39,7 +40,7 @@ currentTheme()
 
 function currentTheme(event){
     body.setAttribute('class', localStorage.getItem('theme')===null?Theme.LIGHT:localStorage.getItem('theme'));
-
+    if(localStorage.getItem('theme')===Theme.DARK){checkboxSwitcher.checked = 'true'}
 }
 
 
